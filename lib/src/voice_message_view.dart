@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:voice_message_package/src/helpers/play_status.dart';
 import 'package:voice_message_package/src/helpers/utils.dart';
 import 'package:voice_message_package/src/voice_controller.dart';
 import 'package:voice_message_package/src/widgets/noises.dart';
@@ -93,8 +92,6 @@ class VoiceMessageView extends StatelessWidget {
             children: [
               /// play pause button
               PlayPauseButton(controller: controller, color: color, size: size),
-
-              ///
               const SizedBox(width: 10),
 
               /// slider & noises
@@ -107,15 +104,6 @@ class VoiceMessageView extends StatelessWidget {
                   Text(controller.remindingTime, style: counterTextStyle),
                 ],
               ),
-
-              ///
-              const SizedBox(width: 12),
-
-              /// speed button
-              _changeSpeedButton(color),
-
-              ///
-              const SizedBox(width: 10),
             ],
           );
         },
@@ -147,8 +135,7 @@ class VoiceMessageView extends StatelessWidget {
                   child: Container(
                     width: controller.noiseWidth,
                     height: 6.w(),
-                    color:
-                        notActiveSliderColor ?? backgroundColor.withOpacity(.4),
+                    color: notActiveSliderColor ?? backgroundColor.withOpacity(.4),
                   ),
                 );
               },
@@ -178,24 +165,6 @@ class VoiceMessageView extends StatelessWidget {
           ],
         ),
       );
-
-  Transform _changeSpeedButton(Color color) => Transform.translate(
-        offset: const Offset(0, -7),
-        child: InkWell(
-          onTap: controller.changeSpeed,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Text(
-              controller.speed.playSpeedStr,
-              style: circlesTextStyle,
-            ),
-          ),
-        ),
-      );
 }
 
 ///
@@ -219,8 +188,7 @@ class CustomTrackShape extends RoundedRectSliderTrackShape {
     bool isDiscrete = false,
   }) {
     const double trackHeight = 10;
-    final double trackLeft = offset.dx,
-        trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackLeft = offset.dx, trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
